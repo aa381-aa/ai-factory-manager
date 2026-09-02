@@ -1,0 +1,119 @@
+{
+  "deployment_mode": "local",
+  "version": {
+    "config_version": 1,
+    "last_updated": "2026-09-02",
+    "gray": {
+      "enabled": false,
+      "canary_instance_count": 1,
+      "observation_minutes": 10,
+      "full_rollout_after_healthy": true
+    }
+  },
+  "interfaces": {
+    "llm_provider": {
+      "type": "openai_compatible",
+      "config": {
+        "base_url_env": "LLM_BASE_URL",
+        "model_env": "LLM_MODEL",
+        "api_key_env": "LLM_API_KEY",
+        "timeout": 60,
+        "max_tokens": 4096,
+        "temperature": 0.3,
+        "thinking": "disabled"
+      }
+    },
+    "intent_llm_provider": {
+      "type": "openai_compatible",
+      "config": {
+        "base_url_env": "LLM_BASE_URL",
+        "model_env": "LLM_MODEL",
+        "api_key_env": "LLM_API_KEY",
+        "timeout": 30,
+        "max_tokens": 2048,
+        "temperature": 0.1,
+        "thinking": "disabled",
+        "thinking_budget": 512,
+        "intent_timeout_sec": 25
+      }
+    },
+    "database": {
+      "local": {
+        "host_env": "DB_HOST",
+        "host": "127.0.0.1",
+        "port": 5432,
+        "database": "ai_factory",
+        "user_env": "DB_USER",
+        "password_env": "DB_PASSWORD",
+        "pool_size": 10,
+        "max_overflow": 20
+      }
+    },
+    "vector_store": {
+      "local": {
+        "host": "127.0.0.1",
+        "port": 19530,
+        "collection": "ai_factory_kb"
+      }
+    },
+    "file_storage": {
+      "local": {
+        "endpoint": "127.0.0.1:9000",
+        "bucket": "ai-factory",
+        "access_key_env": "MINIO_ROOT_USER",
+        "secret_key_env": "MINIO_ROOT_PASSWORD",
+        "secure": false
+      }
+    },
+    "event_bus": {
+      "local": {
+        "host": "127.0.0.1",
+        "port": 6379,
+        "db": 0
+      }
+    },
+    "embedding_provider": {
+      "type": "openai_compatible",
+      "model_env": "EMBEDDING_MODEL",
+      "api_key_env": "EMBEDDING_API_KEY",
+      "dimension": 1024
+    }
+  },
+  "agent_matrix": {
+    "coordinator": {
+      "enabled": true
+    },
+    "sales_agent": {
+      "enabled": true,
+      "priority": "P1"
+    },
+    "production_agent": {
+      "enabled": true,
+      "priority": "P1"
+    },
+    "warehouse_agent": {
+      "enabled": true,
+      "priority": "P1"
+    },
+    "technical_agent": {
+      "enabled": true,
+      "priority": "P1"
+    },
+    "finance_agent": {
+      "enabled": true,
+      "priority": "P1"
+    },
+    "qc_agent": {
+      "enabled": true,
+      "priority": "P2"
+    },
+    "knowledge_assistant": {
+      "enabled": true,
+      "priority": "P2"
+    }
+  },
+  "audit_engine": {
+    "enabled": false,
+    "layers": []
+  }
+}

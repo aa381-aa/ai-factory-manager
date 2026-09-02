@@ -1,0 +1,41 @@
+# 社区版 Python 依赖
+# 说明：仅包含开源版基础功能所需依赖；商业版能力（ISO/审计/L4 微调等）的
+# 依赖（如 ezdxf、reportlab）不在此列。
+
+# Web 框架
+flask>=3.0
+flask-cors>=4.0
+
+# 数据库（PostgreSQL）
+psycopg2-binary>=2.9
+sqlalchemy>=2.0
+
+# 向量库（Milvus；未部署 Milvus 时知识库自动降级 DB 检索）
+pymilvus>=2.4
+
+# 缓存与事件总线（Redis；未配置时自动降级内存模式）
+redis>=5.0
+
+# LLM 接口（OpenAI 兼容：豆包/DeepSeek）
+openai>=1.30
+
+# 生产服务器
+waitress>=3.0          # Windows
+gunicorn>=22.0         # Linux
+gevent>=24.0           # gunicorn gevent worker（SSE 流式并发）
+
+# 配置与工具
+python-dotenv>=1.0
+
+# 认证与加密
+pyjwt>=2.8
+bcrypt>=4.1
+cryptography>=41.0
+
+# 文件解析（基础知识库文档）
+pdfplumber>=0.10.0
+pypdf>=4.0.0
+python-docx>=1.1.0
+openpyxl>=3.1.0
+pytesseract>=0.3.10
+Pillow>=10.0.0

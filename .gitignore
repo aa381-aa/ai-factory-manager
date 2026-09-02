@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# 本地配置与敏感信息（绝不提交真实凭据）
+# 注意：*.example / *.example.json 模板可提交；真实配置忽略
+.env
+.env.local
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+deployment_config.json
+!deployment_config.example.json
+!*.example.json
+
+# 运行时
+*.log
+logs/
+uploads/
+prog/uploads/
+
+# 数据库
+data/
+*.db
+
+# 测试与覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# 备份
+_brand_backup_*/
