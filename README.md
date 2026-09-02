@@ -4,6 +4,10 @@
 
 「AI工厂管家」以业务规则为纲，约束并驱动智能体行为，让智能体像工厂里各司其职的岗位一样照章办事。
 
+![license](https://img.shields.io/badge/license-AGPL--3.0-blue)
+![release](https://img.shields.io/github/v/release/aa381-aa/ai-factory-manager)
+![Commits](https://img.shields.io/github/last-commit/aa381-aa/ai-factory-manager)
+
 > **许可**：AGPL-3.0。社区版仅包含基础通用能力；七层审核、跨部门授权、多跳路由、行业 know-how 规则库、SSO、多租户管理等**商业能力不在本仓库**（见「功能边界」）。
 
 ## 定位
