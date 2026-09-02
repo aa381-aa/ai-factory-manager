@@ -111,6 +111,26 @@ python -m py_compile prog/runtime/coordinator.py
 python -m pytest prog/tests -v
 ```
 
+## FAQ
+
+**Q1：没有外部 LLM 能用吗？**
+能。基础意图识别与规则引擎内置兜底规则，离线即可工作（订单/库存/财务/人事/知识/流程/寒暄等通用意图）。接入 LLM（OpenAI 兼容接口，如豆包/DeepSeek）可增强复杂场景理解与语义兜底。
+
+**Q2：零数据状态如何冷启动？**
+规则引擎带内置默认流程兜底，无任何业务数据也能启动并执行基础审批流。喂入 ISO 质量手册/公司流程后可快速学习业务规则，训练样本经审批入库后生效。
+
+**Q3：必须装 PostgreSQL 吗？**
+是。PostgreSQL ≥ 12 是硬依赖。Redis / Milvus / MinIO 可降级——缺省以内存模式工作（缓存/向量检索/文件存储不可用，核心对话与审批不受影响）。
+
+**Q4：这个仓库和“商业版”什么关系？**
+本仓库是社区版，仅含基础通用能力。七层审核、跨部门授权、多跳路由、ISO 导入、多租户、SSO 等为企业能力，不在本仓库（不参与贡献范围）。
+
+**Q5：训练样本默认会回传吗？**
+不会。数据采集默认关闭（`COMMUNITY_DB_ENABLED=false`）。开启后上报前会脱敏，按租户隔离，且关闭采集不影响任何本地功能。
+
+**Q6：部署有示例吗？**
+见 `prog/deployment_config.example.json`（部署模式/LLM/DB 等）与 `prog/.env.example`（环境变量），配套一键部署脚本 `prog/scripts/deploy_check.py`。
+
 ## 贡献
 
 - 行为准则 + DCO（Developer Certificate of Origin）；
